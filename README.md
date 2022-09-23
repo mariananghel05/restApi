@@ -37,3 +37,14 @@ If file has a diffrent name that the class is required to pe added that exceptio
   All methods from Routes.php should have 1 parameter named $vars,  even if not used.
   path name in addRotue() accept costum variables of type int ex: /user/{id}
   if I wanna get the id from url(/user/12) I have it avaible in method as $vars['id'], if /user/{user_id} then $vars['user_id'].
+  
+  
+  
+  <IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /mb19/dist
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html [L]
+</IfModule>
