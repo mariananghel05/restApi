@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "Router": "./dev/Router.php",
+        "Authorization": "./dev/Auth.php",
+        "DB": "./dev/PDO.php"
+    },
+    "load":{
+        "Routes": "./src/Routes.php"
+    }
+}
