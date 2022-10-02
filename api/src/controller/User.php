@@ -2,7 +2,7 @@
 
 class User{
     public function login($vars){
-        $user = (DB::query("SELECT * FROM users WHERE username=:un AND password=:pw", ["un"=>$vars['username'], "pw"=>$vars['password']]));
+        $user = (DB::query("SELECT * FROM user WHERE username=:un AND password=:pw", ["un"=>$vars['username'], "pw"=>$vars['password']]));
         if(empty($user))
             return "Login failed! Username or Password are wrong!";
         else

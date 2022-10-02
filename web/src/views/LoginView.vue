@@ -1,9 +1,9 @@
 <template>
     <form>
         <h1>Login</h1>
-        <v-text-field/>
-        <v-text-field/>
-        <v-btn depressed elevation="3" raised text x-large :loading="loading"> Login </v-btn>
+        <v-text-field v-model="username"/>
+        <v-text-field v-model="password" type="password"/>
+        <v-btn depressed elevation="3" raised text x-large :loading="loading" @click="login"> Login </v-btn>
     </form>
 </template>
 
@@ -13,7 +13,21 @@
             username: null,
             password: null,
             loading: false
-        })
+        }),
+        methods:{
+            login(){
+                console.log(this.username, this.password)
+                fetch("http://localhost/api/login",{
+                    method: "POST",
+                    body: JSON.stringify({
+                        username: this.username,
+                        password: this.password
+                    })
+                }).then(async response=>{
+                    console.log(await response.json())
+                })
+            }
+        }
     }
 </script>
 
