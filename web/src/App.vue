@@ -28,8 +28,14 @@ export default {
   data: () => ({
     drawer: null
   }),
+  methods:{
+    fetch: ()=>{
+      
+    }
+  }
 }
 </script>
+
 <style scoped>
   a{
     margin-right: 20px;
@@ -41,5 +47,4 @@ export default {
   a:hover{
     color: #333355;
   }
-
 </style>
