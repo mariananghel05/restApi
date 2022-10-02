@@ -1,6 +1,6 @@
 <template>
     <form>
-        <h1>Login</h1>
+        <h1>{{message}}</h1>
         <v-text-field v-model="username"/>
         <v-text-field v-model="password" type="password"/>
         <v-btn depressed elevation="3" raised text x-large :loading="loading" @click="login"> Login </v-btn>
@@ -10,6 +10,7 @@
 <script>
     export default{
         data: ()=>({
+            message: "Login",
             username: null,
             password: null,
             loading: false
@@ -32,6 +33,13 @@
                         let token = await response.json();
                         localStorage.setItem("token", token);
                         this.$router.push('/')
+                    }
+                    if(response.status == 401)
+                    {
+                        this.message = (await response.json()).message
+                    }
+                    else{
+                        
                     }
                 })
             }

@@ -3,8 +3,10 @@
 class User{
     public function login($vars){
         $user = (DB::query("SELECT * FROM user WHERE username=:un AND password=:pw", ["un"=>$vars['username'], "pw"=>$vars['password']]));
-        if(empty($user))
-            return "Login failed! Username or Password are wrong!";
+        if(empty($user)){
+          header('HTTP/1.1 401 Unauthorized');  
+			    return ['status_code'=>401, "message"=>'Login failed! Wrong Username or Password!'];  
+        }
         else
             $user = $user[0];
         
