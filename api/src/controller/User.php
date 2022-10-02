@@ -9,12 +9,33 @@ class User{
             $user = $user[0];
         
         $token = Authorization::genToken('{"username": "' . $user['username'] . '", "id": "' . $user['id'] . '", "first_name": "' . $user['first_name'] . '"}', $_SERVER["REQUEST_TIME_FLOAT"]);
-        setcookie("token", $token, time()+3600, "/");
-        return Authorization::getPayload($token);
+        //setcookie("token", $token, time()+3600, "/");
+        DB::query("INSERT INTO tokens(`user_id`, `token`) VALUES (:user_id, :token)", ["user_id"=>$user['id'], "token"=>$token]);
+        return $token;
 }
 
 public function fetchUser($vars){
-    return Authorization::getPayload($_COOKIE['token']);
+  if(isset(getallheaders()["Authorization"]))
+    $token = getallheaders()["Authorization"];
+  if(isset($_COOKIE['Authorization']))
+    $token = $_COOKIE['Authorization'];
+  if(isset($_GET['Authorization']))
+    $token = $_GET['Authorization'];
+  if(isset($_POST['Authorization']))
+    $token = $_POST['Authorization'];
+
+  if(!isset($token))
+    return false;
+
+  $payload = Authorization::getPayload($token);
+
+  $id = $payload['id'];
+
+  $user = DB::query("SELECT * FROM user WHERE id=:id", ["id"=>$id]);
+  if(!empty($user) && count($user) == 1)
+    return $user[0];
+  else 
+    return false;
 }
 
 public function init($vars){

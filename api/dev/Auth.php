@@ -1,6 +1,7 @@
 <?php
+ini_set('session.use_cookies', '0');
+session_id("mb19");
 session_start();
-session_regenerate_id();
 //_____________Authorization Class_____________\\
 	/**
  * @method respond
@@ -39,22 +40,38 @@ class Authorization{
 
 		//add based64 header, payload and signature as one string separeted each one with "." \\
 		$token = $header . "." . $payload . "." . $signature;
-		
-		//Save into session and return it\\
-		$_SESSION['token'] = $token;
-		$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-		$_SESSION['agent'] = $_SERVER['HTTP_USER_AGENT'];
 		return $token;
 	}
 
-		/**
-	 * @param $token | string 
-	 */
-	public static function validateToken($token){
-		if(!isset($_SESSION['token']))
+	public static function has_rights(){
+		
+		if(isset(getallheaders()["Authorization"]))
+			$token = getallheaders()["Authorization"];
+		if(isset($_COOKIE['Authorization']))
+			$token = $_COOKIE['Authorization'];
+		if(isset($_GET['Authorization']))
+			$token = $_GET['Authorization'];
+		if(isset($_POST['Authorization']))
+			$token = $_POST['Authorization'];
+		
+		if(!isset($token))
 			return false;
-		if($token == $_SESSION['token'] && $_SERVER['REMOTE_ADDR'] == $_SESSION['ip'] && $_SESSION['agent'] == $_SERVER['HTTP_USER_AGENT']){
-			return true;
+
+		$payload = self::getPayload($token);
+		
+		$id = $payload['id'];
+
+		DB::query("DELETE FROM tokens WHERE tokens.issue_at+0 < CURRENT_TIMESTAMP-3600");
+		
+		$tokens = DB::query("SELECT * FROM tokens WHERE `user_id`=:user_id", ["user_id"=>$id]);
+		if(!empty($tokens) && count($tokens) == 1){
+			$tokens=$tokens[0];
+			if($tokens['token'] === $token)
+				return true;
+			else{
+				return false;
+			} 
+				
 		}
 		return false;
 	}

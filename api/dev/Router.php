@@ -41,12 +41,17 @@ class Router{
 		//Asign route varibles\\
 		$route = self::$routes[$url][$method];
 		$action = explode("@", $route['action']);
-		$secure = $route['secure'];
+		$secure_route = $route['secure'];
 		$path = $route['path'];
 
 		//Is authorized to continue?\\
-		if(self::is_unauthorized($secure))
-			return self::is_unauthorized($secure);
+		if($secure_route)
+			if(Authorization::has_rights());
+			else {
+				header('HTTP/1.1 401 Unauthorized');  
+				return ['status_code'=>401, "message"=>'Unauthorized'];
+			}
+		
 
 		//Asign passed values trough request(json, url, etc)\\
 		$vars = self::url_var_extract($url, $path);
@@ -129,49 +134,6 @@ class Router{
 		$vars = substr($vars, 0, -1);
 		parse_str($vars, $vars);
 		return $vars;
-	}
-
-	/**
-	 * Get's and bool value and return true if the token is valid or route is a public.
-	 * @param bool
-	 * @return bool
-	 * 
-	 */
-	private static function is_unauthorized($secure){	
-		//If needed verify token\\
-		if($secure){
-		
-			//Asign token from cookies\\
-			$token = isset($_COOKIE['token'])?$_COOKIE['token']:null;
-
-			//Asign token from headers if not in cookies\\
-			if($token == null)
-			{
-				if(isset(getallheaders()['Authorization']))
-					$token = getallheaders()['Authorization'];
-				else
-					$token = null;
-			}
-
-			//If token is valid return false
-			if(Authorization::validateToken($token)){
-				return false;
-			}
-
-			//Return forbidden if token is not valid.
-			else
-				if($token != null){
-					header('HTTP/1.1 403 Forbidden');  
-					return ['status_code'=>403, "message"=>'Forbidden'];
-				}
-		}
-		else{
-			return false;
-		}
-
-		//If no token was sent, but is needed end's up here\\
-		header('HTTP/1.1 401 Unauthorized');  
-		return ['status_code'=>401, "message"=>'Unauthorized'];
 	}
 
 	/**

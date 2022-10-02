@@ -14,6 +14,10 @@
             password: null,
             loading: false
         }),
+        beforeCreate(){
+            if(this.$store.state.user != null)
+                this.$router.push('/')
+        },
         methods:{
             login(){
                 console.log(this.username, this.password)
@@ -24,7 +28,11 @@
                         password: this.password
                     })
                 }).then(async response=>{
-                    console.log(await response.json())
+                    if(response.status == 200){
+                        let token = await response.json();
+                        localStorage.setItem("token", token);
+                        this.$router.push('/')
+                    }
                 })
             }
         }

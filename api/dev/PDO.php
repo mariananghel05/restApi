@@ -24,13 +24,14 @@ class DB {
         //return an error if something is wrong or return the result.
         if(!$result->execute($data)){
             header('HTTP/1.1 500 Server error');
-            return ["status_code"=>500, "message"=>"Server side error!", $result->errorInfo()];
-
+            echo json_encode(["status_code"=>500, "message"=>"Server side error!"]);
         }
         else{
             return $result->fetchAll(PDO::FETCH_ASSOC);
         }
     }
+
+    
 
     /**
      * Sets database connection parameters
