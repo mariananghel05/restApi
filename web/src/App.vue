@@ -29,9 +29,6 @@ export default {
     drawer: null
   }),
   methods:{
-    fetch: ()=>{
-      
-    }
   }
 }
 </script>

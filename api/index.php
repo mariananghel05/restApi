@@ -10,7 +10,7 @@ include_once('./dev/autoload.php');
 include_once('./dev/init.php');
 
 //_____________Set Database(servername, user, password, database)_____________\\
-DB::setDB("localhost", "root", "", "test");
+DB::setDB("localhost", "root", "1234", "test");
 
 //_____________Response_____________\\
 echo json_encode(Router::getRoute(), JSON_PRETTY_PRINT);
