@@ -1,4 +1,22 @@
 {
     "app_root": "/api",
-    "etc": "etc"
+    "routes": [
+        {
+            "route": "/login",
+            "identifier": "login",
+            "description": "A login end point. Provide an username and password and renturns a token."
+        }, {
+            "route": "/init",
+            "identifier": "init",
+            "description": "Is an initialization of data base. Develop intended."
+        }, {
+            "route": "/fetchuser",
+            "identifier": "fetch user",
+            "description": "Get information about user currently logged in"
+        }, {
+            "route": "/multirequest",
+            "identifier": "multi request",
+            "description": "Not yet meant"
+        }
+    ]
 }

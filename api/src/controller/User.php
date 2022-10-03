@@ -60,6 +60,12 @@ public function init($vars){
     `name` char(64),
     PRIMARY KEY (`id`)
   );
+  CREATE TABLE `tokens` (
+    `user_id` int,
+    `issue_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+    `token` varchar(255),
+    PRIMARY KEY (`user_id`)
+  );
   
   CREATE TABLE `user` (
     `id` int NOT NULL PRIMARY KEY,
@@ -77,14 +83,22 @@ public function init($vars){
     `function_id` int DEFAULT NULL,
     `language_id` int DEFAULT 1
   );
-  ALTER TABLE `user` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT; 
-
   CREATE TABLE `function` (
     `id` int,
     `name` char(64),
     PRIMARY KEY (`id`)
   );
-  
+
+
+
+
+  ALTER TABLE `user` CHANGE `id` `id` INT NOT NULL AUTO_INCREMENT; 
+  ALTER TABLE `class` CHANGE `id` `id` INT NOT NULL AUTO_INCREMENT; 
+  ALTER TABLE `language` CHANGE `id` `id` INT NOT NULL AUTO_INCREMENT;
+  ALTER TABLE `function` CHANGE `id` `id` INT NOT NULL AUTO_INCREMENT;
+  ALTER TABLE `access_level` CHANGE `id` `id` INT NOT NULL AUTO_INCREMENT;
+
+
 ALTER TABLE `class`
     ADD CONSTRAINT `master_id`
     FOREIGN KEY (`master_id`)
@@ -106,6 +120,11 @@ ALTER TABLE `user`
     FOREIGN KEY (`access_level`)
     REFERENCES `access_level`(`id`);
 
+ALTER TABLE `tokens`
+    ADD CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user`(`id`);
+
 SET foreign_key_checks = 0;
  INSERT INTO language(`id`, `name`) VALUES'." (1, 'ROMANA');".
 'INSERT INTO `user`(`username`, `password`, `email`, `phone`, `first_name`, `last_name`, `access_level`, `birth_date`, `age`, `class_id`, `function_id`, `language_id`) VALUES '."('anghelmarian05', '1234', 'mariananghel99@gmail.com', 0769698932, 'Marian', 'Anghel', 0, '1999-01-05', 23, NULL, 1, 1);".
@@ -117,7 +136,8 @@ SET foreign_key_checks = 0;
 
   ';
   
-  return DB::query($query, null);
+  DB::query($query, null);
+  return "done.";
 }
 
 }
