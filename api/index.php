@@ -19,5 +19,5 @@ DB::setDB("localhost", "root", "1234", "test");
 echo json_encode(Router::getRoute(), JSON_PRETTY_PRINT);
 
 //_____________Execution Time_____________\\
-$time = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
+//$time = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
 //echo "Process Time: {$time}";

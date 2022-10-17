@@ -12,12 +12,7 @@ export default {
     data: ()=>({
         nume: null,
         prenume: null
-    }),
-    beforeUnmount(){
-        let div = document.querySelector('div')[0];
-        div.classList.add("hide");
-        window.event.preventDefault();
-    }
+    })
 
 }
 </script>
