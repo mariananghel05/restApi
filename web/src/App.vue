@@ -2,7 +2,9 @@
 <v-app id="inspire">
   <v-navigation-drawer v-model="drawer" app>
       <ul>
+        <li><router-link to="/about">About</router-link></li>
         <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/dosar_credite">Dosar Credite</router-link></li>
       </ul>
     </v-navigation-drawer>
     <v-app-bar app>
@@ -30,18 +32,6 @@ export default {
   }),
   methods:{
     
-  },
-  mounted(){
-      fetch("http://localhost/api/fetchuser?Authorization=" + localStorage.getItem("token"), {
-        method:"GET"
-      }).then( async response =>{
-        if(response.status == 200){
-            let user = await  response.json();
-            this.$store.state.user = user;
-        }
-        if(response.status == 401)
-          return;
-      })
   }
 }
 </script>
@@ -64,12 +54,18 @@ export default {
     top: 5%;
     transform: translate(-0% -65%); 
   }
+
+
 </style>
-<style>
+<style >
   body{
     transition: 0.5s;
     animation: show 1.5s;
   }
+  main{
+        animation: show 0.5s;
+        
+    }
   @keyframes show {
     0%{
       opacity: 0;
@@ -79,4 +75,17 @@ export default {
       opacity: 1;
     }
   }
+  @keyframes hide {
+    0%{
+      opacity: 1;
+
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+  .hide{
+    animation: hide 0.5s;
+  }
+    
 </style>

@@ -1,5 +1,7 @@
 <template>
-  <HelloWorld />
+  <div>
+    <HelloWorld />
+  </div>
 </template>
 
 <script>
@@ -16,3 +18,19 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+    div{
+        position: relative;
+        animation: show 0.5s;
+    }
+    
+    @keyframes show {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+</style>

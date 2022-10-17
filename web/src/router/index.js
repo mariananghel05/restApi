@@ -19,6 +19,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/LoginView.vue')
+  },
+  {
+    path: '/dosar_credite',
+    name: 'dosar_credite',
+    component: () => import('@/views/DosarCrediteView.vue')
   }
 ]
 
