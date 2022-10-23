@@ -32,6 +32,7 @@ $json =  json_encode([
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ modules ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
         "DB"=>"dev/modules/DB.php",
         "Auth"=>"dev/modules/Auth.php",
+        "Security"=>"dev/modules/Security.php",
     
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Models ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
