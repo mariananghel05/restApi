@@ -1,33 +1,40 @@
 <?php
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
-//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜   DB   ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
+//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜  Security  ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
 
 class Security{
-    public static function protect($string){
-        if($string="auth:admin"){
-            $auth = getallheaders();
-            if(empty($auth["Authorization"])){
-                Response::response("Unauthorized", 401);
-                exit;
-            }
-            else
-                $auth = $auth["Authorization"];
+    public static function protect($args=null){
 
-            
-            if($auth == "Bearer 6|9truZtjtroGgDU6uQYrG00b2JLrs8E5bOv0uoZkq")
-                return new class(){
-                    public function group($routes){
-                        foreach($routes as $route){
-                            if(gettype($route) != NULL)
-                                echo $route;
-                        }
-                    }
-                };
-            else{
-                Response::response("Unauthorized", 401);
-                exit;
-            }
-        }
+        $headers = getallheaders();
+        if(empty($headers['Authorization']))
+            Response::response("Unauthorized", 401);
+
+        $token = $headers['Authorization'];
+        $auth = "Bearer 6|9truZtjtroGgDU6uQYrG00b2JLrs8E5bOv0uoZkq";
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        if($token == $auth)
+            return new class($args){
+                public function __construct($args){
+                    
+                }
+                public function group($routes){
+                    return;
+                }
+            };
+        else
+            Response::response("Unauthorized", 401);
+    
+
     }
 }

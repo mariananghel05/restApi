@@ -13,7 +13,11 @@ DB::setDB(CONFIG->db->server, CONFIG->db->name, CONFIG->db->password, CONFIG->db
 //echo Response::response(Auth::genToken(json_encode(["dum"=>"dumest"]), "parolamea"));
 
 Router::get(CONFIG->app->publicPath . "/users", [User::class, 'show']);
-Security::protect("auth:admin")->group([
+
+Security::protect()->group([
+    
     Router::get(CONFIG->app->publicPath . "/product", [Product::class, 'show']),
     Router::post(CONFIG->app->publicPath . "/product", [Product::class, 'show'])
 ]);
+
+Response::response("Not Found!", 404);
