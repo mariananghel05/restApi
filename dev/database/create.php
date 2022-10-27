@@ -8,7 +8,29 @@ class Table{
                 $this->query = "CREATE TABLE " . $table_name . " ( `id` int NOT NULL PRIMARY KEY";
             }
             public function string($name){
+                return new class(){
+                    public function nullable(){
+                        //pass
+                    }
+                    public function unique(){
+                        //pass
+                    }
+                    public function default(){
+                        //pass
+                    }
+                    public function PK(){
+                        //pass
+                    }
+                    public function FK(){
+                        //pass
+                    }
+                    public function auto_increment(){
+                        //pass
+                    }
+                };
+
                 $this->query .= ", `".$name."` char(255) ";
+                
             }
             public function int($name){
                 $this->query .= ", `".$name."` int";
