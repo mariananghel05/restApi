@@ -1,6 +1,6 @@
 <?php
 
-class UserModel extends Model{
+class UserModel {
     protected static int $id;
     protected static string $name;
     protected static string $username;

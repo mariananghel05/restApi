@@ -25,8 +25,6 @@ $json =  json_encode([
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ api ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\        
         "Router"=>"dev/api/Router.php",
         "Response"=>"dev/api/Response.php",
-        "Controller"=>"dev/api/Controller.php",
-        "Model"=>"dev/api/Model.php",
         "Request"=>"dev/api/Request.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ modules ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\

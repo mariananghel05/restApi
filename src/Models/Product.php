@@ -1,7 +1,7 @@
 <?php
 
 
-class Product extends Model{
+class Product{
     protected int $id;
     protected string $name;
     protected string $description;
