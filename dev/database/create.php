@@ -8,6 +8,7 @@ class Table{
                 $this->query = "CREATE TABLE " . $table_name . " ( `id` int NOT NULL PRIMARY KEY";
             }
             public function string($name){
+                $this->query .= ", `".$name."` char(255) ";
                 return new class(){
                     public function nullable(){
                         //pass
@@ -27,9 +28,7 @@ class Table{
                     public function auto_increment(){
                         //pass
                     }
-                };
-
-                $this->query .= ", `".$name."` char(255) ";
+                };              
                 
             }
             public function int($name){
