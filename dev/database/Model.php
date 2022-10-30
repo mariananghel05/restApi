@@ -3,7 +3,7 @@
 
 class Model{
     protected int $index;
-
+    
     protected function load(){
 
     }
@@ -25,5 +25,4 @@ class Model{
     protected function create(){
         
     }
-
 }

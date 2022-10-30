@@ -1,6 +1,5 @@
 <?php
 
-
 class Permissions{
     public function __construct($permissions = 
     [["name"=>"admin", "write"=>1, "read"=>1, "modify"=>1],
@@ -9,6 +8,6 @@ class Permissions{
 
     }
     public function verify(){
-        
+   
     }
 }
