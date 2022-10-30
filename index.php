@@ -13,6 +13,7 @@ DB::setDB(CONFIG->db->server, CONFIG->db->name, CONFIG->db->password, CONFIG->db
 //echo Response::response(Auth::genToken(json_encode(["dum"=>"dumest"]), "parolamea"));
 
 Router::get(CONFIG->app->publicPath . "/users", [User::class, 'show']);
+Router::get(CONFIG->app->publicPath . "/user/init", [User::class, 'init']);
 
 Security::protect()->group([
     

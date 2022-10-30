@@ -26,7 +26,7 @@ class DB {
         $result = $conn->prepare($sql);
         
         //return an error if something is wrong or return the result.
-        if(!$result->execute($data)){
+        if(!$result){
             header('HTTP/1.1 500 Server error');
             echo json_encode(["status_code"=>500, "message"=>"Server side error!"]);
         }

@@ -31,16 +31,17 @@ $json =  json_encode([
         "DB"=>"dev/modules/DB.php",
         "Auth"=>"dev/modules/Auth.php",
         "Security"=>"dev/modules/Security.php",
-    
+
+//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ dababase ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
+        "Table" => "dev/database/create.php",
+        "Model" => "dev/api/Model.php",
+        "Controller" => "dev/api/Model.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Models ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
    
-        "UserModel"=>"src/Models/User.php",
-        "ProductModel"=>"src/Models/Product.php",
+        "User"=>"src/Models/User.php",
+        "Product"=>"src/Models/Product.php",
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Controllers ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
-
-        "User"=>"src/Controllers/User.php",
-        "Product"=>"src/Controllers/Product.php"
 
     ],
 ]);
