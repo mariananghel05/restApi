@@ -1,7 +1,9 @@
 <?php
 
 class User extends Model {
-    
+    public static function show(){
+        Response::response('show');
+    }
     public static function init(){
         $user = new Table('user');
         $user->int('id')->PK()->auto_increment();
@@ -13,8 +15,7 @@ class User extends Model {
         $user->int('acces_level')->default(10); 
         $user->date('birth_date')->default('CURRENT_TIMESTAMP');
         $user->int('age')->default(0);
-        $user->done();
-
-        Response::response("Done.");
+        
+        Response::response($user->done());
     }
 }

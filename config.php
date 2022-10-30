@@ -13,7 +13,7 @@ $json =  json_encode([
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Database configuration ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
 
     "db"=>[
-        "server"=>"localhost",
+        "server"=>"127.0.0.1",
         "name"=>"root",
         "password"=>"",
         "db"=>"test"

@@ -6,7 +6,6 @@ class Table{
         $this->name = $table_name;
         $this->props = ["id" => "int NOT NULL PRIMARY KEY"];
         $this->current_prop = $table_name;
-        $this->post_creation = [];
     }
         //types
         public function string($name){
@@ -66,7 +65,7 @@ class Table{
             $query = "CREATE TABLE `" . $this->name . "` (";
             $query .= implode(", ", $this->props);
             $query .= ")ENGINE=InnoDB;";
-            echo $query;
             DB::query($query);
+            return $this;
         }
     }
