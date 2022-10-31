@@ -68,4 +68,22 @@ class Table{
             DB::query($query);
             return $this;
         }
+
+        public function populate($number){
+            $keys = array_keys($this->props);
+            $ss = implode('`, `', $keys);
+            for($i=0; $i<$number; $i++){
+
+            str_replace(["registration_date", "birth_date"], "", $ss );
+            $query = "INSERT INTO `" . $this->name . "`(`" . $ss ."`) VALUES (";
+            $query .="";
+            foreach($keys as $key) {
+                $query .=  random_int(0, 9999999) . ", ";
+            }
+            $query = substr($query, 0, -3);
+            $query .= ")";
+            echo $query;
+            DB::query($query);
+            }
+        }
     }

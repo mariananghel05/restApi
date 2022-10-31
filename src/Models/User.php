@@ -2,7 +2,9 @@
 
 class User extends Model {
     public static function show(){
-        Response::response('show');
+        $users = DB::query("SELECT * FROM user WHERE name LIKE '%'");
+        //DB::query("DELETE FROM user");
+        Response::response([count($users), $users]);
     }
     public static function init(){
         $user = new Table('user');
@@ -16,6 +18,7 @@ class User extends Model {
         $user->date('birth_date')->default('CURRENT_TIMESTAMP');
         $user->int('age')->default(0);
         
-        Response::response($user->done());
+        Response::response($user->populate(100));
     }
+
 }
