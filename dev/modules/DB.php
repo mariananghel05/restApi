@@ -37,8 +37,8 @@ class DB {
             }
         }
         catch (Throwable $t)
-        {
-            Response::response($t->errorInfo);
+        { 
+            return $t->errorInfo;
         }
 
     }

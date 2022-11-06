@@ -7,27 +7,81 @@ class Router{
     
     public static function get(string $path, $action = null){
         if($_SERVER['REQUEST_METHOD'] == "GET")
-            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path)
-                return $action(self::request());
-
+            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path){              
+                try 
+                {
+                    $action(self::request());
+                }
+                catch(Exception $e){
+                    $message = explode("$", $e->getMessage());
+                    $var_name = $message[1];
+                    $message = $message[0];
+                    $message = explode(" ", $message)[0];
+                    if($message == "Undefined"){
+                        $message = "'" . $var_name . "' is required!";
+                    }
+                    Response::response($message);
+                }
+            }
     }
     public static function post(string $path, $action = null){
         if($_SERVER['REQUEST_METHOD'] == "POST")
-            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path)
-                return $action(self::request());
+            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path){              
+                try 
+                {
+                    $action(self::request());
+                }
+                catch(Exception $e){
+                    $message = explode("$", $e->getMessage());
+                    $var_name = $message[1];
+                    $message = $message[0];
+                    $message = explode(" ", $message)[0];
+                    if($message == "Undefined"){
+                        $message = "'" . $var_name . "' is required!";
+                    }
+                    Response::response($message);
+                }
+            }
 
     }
     public static function put(string $path, $action = null){
         if($_SERVER['REQUEST_METHOD'] == "PUT")
-            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path)
-                return $action(self::request());
+            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path){              
+                try 
+                {
+                    $action(self::request());
+                }
+                catch(Exception $e){
+                    $message = explode("$", $e->getMessage());
+                    $var_name = $message[1];
+                    $message = $message[0];
+                    $message = explode(" ", $message)[0];
+                    if($message == "Undefined"){
+                        $message = "'" . $var_name . "' is required!";
+                    }
+                    Response::response($message);
+                }
+            }
 
     }
     public static function delete(string $path, $action = null){
         if($_SERVER['REQUEST_METHOD'] == "DELETE")
-            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path)
-                return $action(self::request());
-
+            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path){              
+                try 
+                {
+                    $action(self::request());
+                }
+                catch(Exception $e){
+                    $message = explode("$", $e->getMessage());
+                    $var_name = $message[1];
+                    $message = $message[0];
+                    $message = explode(" ", $message)[0];
+                    if($message == "Undefined"){
+                        $message = "'" . $var_name . "' is required!";
+                    }
+                    Response::response($message);
+                }
+            }
     }
     public static function resource(string $path, $action){
        // return $action(self::request());

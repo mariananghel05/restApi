@@ -2,18 +2,13 @@
 
 
 class Product{
-    protected int $id;
-    protected int $userId;
-    protected string $name;
-    protected string $description;
-    protected float $price;
-    protected string $slug;
-
-    public static function getprops(){
-        return  self::get_vars();
-    }
-    public static function show($request){
-        $products = [1=>"Product One", 2=>"Product Two"];
-        Response::response($products[$request->id],200);
+    public static function init(){
+        $product = new Table('product');
+        $product->int('id')->PK()->auto_increment();
+        $product->int('user_id')->FK('user', 'id');
+        $product->string('name');
+        $product->string('slug')->nullable();
+        $product->done();
+        Response::response("Found!", 200);
     }
 }

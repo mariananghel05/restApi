@@ -1,11 +1,6 @@
 <?php
 
 class User extends Model {
-    public static function show(){
-        $users = DB::query("SELECT * FROM user WHERE name LIKE '%'");
-        //DB::query("DELETE FROM user");
-        Response::response([count($users), $users]);
-    }
     public static function init(){
         $user = new Table('user');
         $user->int('id')->PK()->auto_increment();
@@ -17,8 +12,19 @@ class User extends Model {
         $user->int('acces_level')->default(10); 
         $user->date('birth_date')->default('CURRENT_TIMESTAMP');
         $user->int('age')->default(0);
-        
-        Response::response($user->populate(100));
+        $user->int('permissions_id')->FK('permissions', 'id');
+        Response::response($user->done());
     }
+
+    public static function show(){
+        $users = DB::query("SELECT * FROM user WHERE name LIKE '%'");
+
+        //DB::query("DELETE FROM user");
+        Response::response($users[0]);
+    }
+    public static function show2($r){
+        $r->name;
+    }
+
 
 }

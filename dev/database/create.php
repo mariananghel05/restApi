@@ -2,7 +2,8 @@
 
 class Table{
 
-    public function __construct($table_name){
+    public function __construct($table_name, $controller_path = "src/Controllers/"){
+        $this->controller_path = $controller_path;
         $this->name = $table_name;
         $this->props = ["id" => "int NOT NULL PRIMARY KEY"];
         $this->current_prop = $table_name;
@@ -40,7 +41,7 @@ class Table{
             return $this;
         }
         public function FK($table, $column){
-            $this->props[$this->current_prop] .= ", FOREIGN KEY `fk_".$this->current_prop."`(`".$this->current_prop."`) REFERENCES `".$table . "`(`".$column."`) ON UPDATE CASCADE ON DELETE RESTRICT";
+            $this->props[$this->current_prop] .= ", FOREIGN KEY `fk_".$this->current_prop."`(`".$this->current_prop."`) REFERENCES `".$table . "`(`".$column."`) ON UPDATE CASCADE ON DELETE CASCADE";
             return $this;
         }
         public function nullable(){ 
@@ -65,8 +66,28 @@ class Table{
             $query = "CREATE TABLE `" . $this->name . "` (";
             $query .= implode(", ", $this->props);
             $query .= ")ENGINE=InnoDB;";
-            DB::query($query);
-            return $this;
+            $message = DB::query($query);
+            $this->create_controller($this->controller_path);
+            return $message;
+        }
+        public function create_controller($path){
+            if($path){
+                $controller = "<?php
+//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
+//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ ".$this->name."  ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
+//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
+
+class ".$this->name." extends Controller \n{\n";
+                $keys = array_keys($this->props);
+                foreach($keys as $key){
+                    $controller .= "protected static $" . $key . " = null;\n";
+                }
+                $controller .= "\n}";
+
+                file_put_contents($path . $this->name . ".php",$controller);
+            }
+            return 1;
+        
         }
 
         public function populate($number){

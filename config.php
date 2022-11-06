@@ -35,12 +35,13 @@ $json =  json_encode([
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ dababase ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
         "Table" => "dev/database/create.php",
         "Model" => "dev/api/Model.php",
-        "Controller" => "dev/api/Model.php",
+        //"Controller" => "dev/api/Model.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Models ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
    
         "User"=>"src/Models/User.php",
         "Product"=>"src/Models/Product.php",
+        "Permissions"=>"src/Models/Permissions.php"
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Controllers ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
 
     ],

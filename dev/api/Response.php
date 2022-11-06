@@ -11,5 +11,9 @@ class Response{
         echo json_encode($message);
         exit;
     }
+    //etc...
+    public static function html($message, $code=200){
+
+    }
 
 }
