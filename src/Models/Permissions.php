@@ -2,11 +2,12 @@
 
 
 
-class Permissions{
+class Permissions extends Model{
     public static function init(){
-        $table = new Table('permissions');
-        $table->int('id')->PK()->auto_increment();
-        $table->string('name');
-        $table->done();
+        self::create_table();
+        self::$table->int('id')->PK()->auto_increment();
+        self::$table->string('name');
+        self::$table->done();
+        Response::response("done");
     }
 }

@@ -62,11 +62,12 @@ class Table{
         }
 
 
-        public function done(){
+        public function done($generate_controller = true){
             $query = "CREATE TABLE `" . $this->name . "` (";
             $query .= implode(", ", $this->props);
             $query .= ")ENGINE=InnoDB;";
             $message = DB::query($query);
+            if($generate_controller)
             $this->create_controller($this->controller_path);
             return $message;
         }

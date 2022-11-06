@@ -2,7 +2,10 @@
 
 
 abstract class Model{
-    public static function create_controller($obj){
-        Response::response($obj);
+    protected static $table = null;
+    public static function create_table(){
+        self::$table = new Table(get_called_class());
+        return self::$table;
+        
     }
 }

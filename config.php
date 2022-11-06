@@ -33,12 +33,11 @@ $json =  json_encode([
         "Security"=>"dev/modules/Security.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ dababase ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
-        "Table" => "dev/database/create.php",
+        "Table" => "dev/database/Table.php",
         "Model" => "dev/api/Model.php",
         //"Controller" => "dev/api/Model.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Models ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
-   
         "User"=>"src/Models/User.php",
         "Product"=>"src/Models/Product.php",
         "Permissions"=>"src/Models/Permissions.php"

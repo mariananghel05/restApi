@@ -20,7 +20,7 @@ class User extends Model {
         $users = DB::query("SELECT * FROM user WHERE name LIKE '%'");
 
         //DB::query("DELETE FROM user");
-        Response::response($users[0]);
+        Response::response($users);
     }
     public static function show2($r){
         $r->name;
