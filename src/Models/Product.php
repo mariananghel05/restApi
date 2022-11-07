@@ -1,6 +1,5 @@
 <?php
 
-
 class Product{
     public static function init(){
         $product = new Table('product');

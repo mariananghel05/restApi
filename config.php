@@ -25,22 +25,21 @@ $json =  json_encode([
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ api ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\        
         "Router"=>"dev/api/Router.php",
         "Response"=>"dev/api/Response.php",
-        "Request"=>"dev/api/Request.php",
+        "Model" => "dev/api/Model.php",
+        "Controller" => "dev/api/Controller.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ modules ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
-        "DB"=>"dev/modules/DB.php",
         "Auth"=>"dev/modules/Auth.php",
         "Security"=>"dev/modules/Security.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ dababase ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
+        "DB"=>"dev/database/DB.php",
         "Table" => "dev/database/Table.php",
-        "Model" => "dev/api/Model.php",
-        //"Controller" => "dev/api/Model.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Models ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
         "User"=>"src/Models/User.php",
         "Product"=>"src/Models/Product.php",
-        "Permissions"=>"src/Models/Permissions.php"
+        "Permissions"=>"src/Controllers/Permissions.php"
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Controllers ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
 
     ],

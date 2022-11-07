@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Permissions extends Model{
     public static function init(){
         self::create_table();

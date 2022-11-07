@@ -28,6 +28,7 @@ Router::get(CONFIG->app->publicPath . "/users2", [User::class, 'show2']);
 Router::get(CONFIG->app->publicPath . "/user/init", [User::class, 'init']);
 Router::get(CONFIG->app->publicPath . "/product/init", [Product::class, 'init']);
 Router::get(CONFIG->app->publicPath . "/permissions/init", [Permissions::class, 'init']);
+Router::get(CONFIG->app->publicPath . "/permissions/save", [Permissions::class, 'save']);
 Router::get(CONFIG->app->publicPath . "/test", [User::class, 'test']);
 
 Security::protect()->group([
