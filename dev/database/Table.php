@@ -71,35 +71,26 @@ class Table{
             $this->create_controller($this->controller_path);
             return $message;
         }
-//         public function create_controller($path){
-//             if($path){
-//                 $controller = "<?php
-// //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
-// //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ ".$this->name."  ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
-// //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
-
-// class ".$this->name." extends Controller \n{\n";
-//                 $keys = array_keys($this->props);
-//                 foreach($keys as $key){
-//                     $controller .= "protected static $" . $key . " = null;\n";
-//                 }
-//                 $controller .= "\n}";
-
-//                 file_put_contents($path . $this->name . ".php",$controller);
-//             }
-//             return 1;
-        
-//         }
         public function create_controller($path){
-            $keys = array_keys($this->props);
-            return new class($keys){
-                public function __construct($keys){
-                    foreach($keys as $key){
-                        $this->$key = null;
-                    }
+            if($path){
+                $controller = "<?php
+//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
+//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ ".$this->name."  ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
+//⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\\
+
+class ".$this->name." extends Controller \n{\n";
+                $keys = array_keys($this->props);
+                foreach($keys as $key){
+                    $controller .= "protected static $" . $key . " = null;\n";
                 }
-            }        
+                $controller .= "\n}";
+
+                file_put_contents($path . $this->name . ".php",$controller);
+            }
+            return 1;
+        
         }
+
 
         public function populate($number){
             $keys = array_keys($this->props);

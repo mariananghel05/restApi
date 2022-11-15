@@ -15,16 +15,4 @@ class User extends Model {
         $user->int('permissions_id')->FK('permissions', 'id');
         Response::response($user->done());
     }
-
-    public static function show(){
-        $users = DB::query("SELECT * FROM user WHERE name LIKE '%'");
-
-        //DB::query("DELETE FROM user");
-        Response::response($users);
-    }
-    public static function show2($r){
-        $r->name;
-    }
-
-
 }

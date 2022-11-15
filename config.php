@@ -31,6 +31,7 @@ $json =  json_encode([
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ modules ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
         "Auth"=>"dev/modules/Auth.php",
         "Security"=>"dev/modules/Security.php",
+        "Error"=>"dev/modules/Error.php",
 
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ dababase ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
         "DB"=>"dev/database/DB.php",
@@ -39,14 +40,13 @@ $json =  json_encode([
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Models ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
         "User"=>"src/Models/User.php",
         "Product"=>"src/Models/Product.php",
-        "Permissions"=>"src/Controllers/Permissions.php"
 //⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜ Controllers ⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜⁜\\
-
+        "Permissions"=>"src/Controllers/Permissions.php",
+        "User"=>"src/Controllers/User.php",
+        "Product"=>"src/Controllers/Product.php"
     ],
 ]);
 
 $config = json_decode($json);
 define("CONFIG", $config);
-
-
 

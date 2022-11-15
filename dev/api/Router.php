@@ -7,7 +7,7 @@ class Router{
     
     public static function get(string $path, $action = null){
         if($_SERVER['REQUEST_METHOD'] == "GET")
-            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path){              
+            if(explode("?",$_SERVER['REQUEST_URI'])[0] == CONFIG->app->publicPath . $path){              
                 try 
                 {
                     $action(self::request());
@@ -26,7 +26,7 @@ class Router{
     }
     public static function post(string $path, $action = null){
         if($_SERVER['REQUEST_METHOD'] == "POST")
-            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path){              
+            if(explode("?",$_SERVER['REQUEST_URI'])[0] == CONFIG->app->publicPath . $path){              
                 try 
                 {
                     $action(self::request());
@@ -46,7 +46,7 @@ class Router{
     }
     public static function put(string $path, $action = null){
         if($_SERVER['REQUEST_METHOD'] == "PUT")
-            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path){              
+            if(explode("?",$_SERVER['REQUEST_URI'])[0] == CONFIG->app->publicPath . $path){              
                 try 
                 {
                     $action(self::request());
@@ -66,7 +66,7 @@ class Router{
     }
     public static function delete(string $path, $action = null){
         if($_SERVER['REQUEST_METHOD'] == "DELETE")
-            if(explode("?",$_SERVER['REQUEST_URI'])[0] == $path){              
+            if(explode("?",$_SERVER['REQUEST_URI'])[0] == CONFIG->app->publicPath . $path){              
                 try 
                 {
                     $action(self::request());
