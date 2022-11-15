@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="upload"  />
+    <a href="#" id="link">s</a>
+    <script>
+        const input = document.getElementById('upload');
+        const link = document.getElementById('link');
+        let objectURL;
+
+input.addEventListener('change', function () {
+  if (objectURL) {
+    // revoke the old object url to avoid using more memory than needed
+    URL.revokeObjectURL(objectURL);  
+  }
+
+  const file = this.files[0];
+  let formData = new FormData();
+  formData.append("name", "gg");
+  formData.append("file", file);
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST","http://localhost/api2/index.php");
+  xhr.onload = ()=>{
+    console.log(xhr.responseText);
+    console.log(file.name);
+  }
+  xhr.send(formData);
+  objectURL = URL.createObjectURL(file);
+
+  link.download = file.name; // this name is used when the user downloads the file
+  link.href = objectURL;
+
+
+});
+    </script>
+</body>
+</html>
